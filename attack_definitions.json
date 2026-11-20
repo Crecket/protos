@@ -669,6 +669,14 @@
     "specCost": 25
   },
   {
+    "name": "RUNE_CROSSBOW",
+    "protoId": 137,
+    "weaponIds": [9185, 26486],
+    "animationIds": [7552],
+    "cooldown": 5,
+    "category": "RANGED"
+  },
+  {
     "name": "SAELDOR",
     "protoId": 33,
     "weaponIds": [
