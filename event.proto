@@ -341,6 +341,7 @@ enum PlayerAttack {
   WATER_SURGE = 134;
   EARTH_SURGE = 135;
   FIRE_SURGE = 136;
+  RUNE_CROSSBOW = 137;
 }
 
 enum PlayerSpell {
