@@ -405,6 +405,10 @@ message AttackDefinition {
   // If nonempty, one of these graphics must be present on the attacker.
   repeated int32 attacker_graphic_ids = 12;
 
+  // Sounds played to the attacker, used to detect an attack repeated while its
+  // animation is still playing.
+  repeated int32 sound_ids = 13;
+
   enum Category {
     MELEE = 0;
     RANGED = 1;
