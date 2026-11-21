@@ -455,6 +455,13 @@ enum NpcAttack {
   TFA_GUARDIAN_BREATH_FOCUS = 154;
   TFA_GUARDIAN_BREATH = 155;
 
+  TFA_BORK_MELEE = 170;
+  TFA_BORK_STOMP = 171;
+  TFA_SMORKS_RANGE = 172;
+  TFA_SMORKS_MAGE = 173;
+  TFA_SMORKS_NAPALM = 174;
+  TFA_SMORKS_CANNONBALL = 175;
+
   TFA_XARTH_MAGE = 210;
   TFA_XARTH_RANGE = 211;
   TFA_XARTH_MELEE = 212;
@@ -536,6 +543,13 @@ message Event {
     TFA_GUARDIAN_ROCKS = 352;
     TFA_GUARDIAN_SHROOMS = 353;
     TFA_GUARDIAN_BRAZIER = 354;
+
+    TFA_BORK_DUST = 360;
+    TFA_BORK_NAPALM = 361;
+    TFA_BORK_CANNON_AUTO = 362;
+    TFA_BORK_BOMB = 363;
+    TFA_BORK_STUN = 364;
+    TFA_BORK_SPEEDUP = 365;
 
     TFA_XARTH_BOMBS = 410;
     TFA_XARTH_BLAST = 411;
@@ -682,6 +696,14 @@ message Event {
       Position position = 1;
     }
 
+    message Bork {
+      BorkSpeed speed = 1;
+    }
+
+    message Smorks {
+      BorkSpeed speed = 1;
+    }
+
     uint32 id = 1;
     fixed64 room_id = 2;
     fixed32 hitpoints = 3;
@@ -706,6 +728,8 @@ message Event {
       Mokhaiotl mokhaiotl = 68;
       Guardian guardian = 69;
       GuardianBrazier guardian_brazier = 70;
+      Bork bork = 71;
+      Smorks smorks = 72;
     }
   }
 
@@ -857,6 +881,14 @@ message Event {
     VERZIK_P1 = 1;
     VERZIK_P2 = 2;
     VERZIK_P3 = 3;
+  }
+
+  enum BorkSpeed {
+    BORK_REGULAR = 0;
+    BORK_FAST = 1;
+    BORK_FASTER = 2;
+    BORK_FASTEST = 3;
+    BORK_ENRAGE = 4;
   }
 
   message AttackStyle {
@@ -1032,6 +1064,34 @@ message Event {
     Npc.GuardianBrazier.Position position = 2;
   }
 
+  message TfaBorkDust {
+    repeated Coords tiles = 1;
+  }
+
+  message TfaBorkNapalm {
+    repeated Coords added = 1;
+    repeated Coords removed = 2;
+  }
+
+  message TfaBorkCannonAuto {
+    repeated string targets = 1;
+    repeated uint32 target_party_indices = 2;
+    uint32 landing_tick = 3;
+  }
+
+  message TfaBorkBomb {
+    Coords target = 1;
+    uint32 landing_tick = 2;
+  }
+
+  message TfaBorkStun {
+    uint32 bomb_tick = 1;
+  }
+
+  message TfaBorkSpeedup {
+    BorkSpeed speed = 1;
+  }
+
   message TfaXarthBombs {
     repeated Coords tiles = 1;
     uint32 landing_tick = 2;
@@ -1124,6 +1184,13 @@ message Event {
   optional TfaGuardianRocks tfa_guardian_rocks = 151;
   optional TfaGuardianShrooms tfa_guardian_shrooms = 152;
   optional TfaGuardianBrazier tfa_guardian_brazier = 153;
+
+  optional TfaBorkDust tfa_bork_dust = 160;
+  optional TfaBorkNapalm tfa_bork_napalm = 161;
+  optional TfaBorkCannonAuto tfa_bork_cannon_auto = 162;
+  optional TfaBorkBomb tfa_bork_bomb = 163;
+  optional TfaBorkStun tfa_bork_stun = 164;
+  optional TfaBorkSpeedup tfa_bork_speedup = 165;
 
   optional TfaXarthBombs tfa_xarth_bombs = 210;
   optional TfaXarthBlast tfa_xarth_blast = 211;

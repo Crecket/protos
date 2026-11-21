@@ -1957,7 +1957,8 @@
     "semanticId": false,
     "size": 4,
     "mode": "NO_MODE",
-    "maxSpeed": 1
+    "maxSpeed": 1,
+    "deathAnimation": 14541
   },
   {
     "name": "THE_SMORKS",
